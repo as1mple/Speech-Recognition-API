@@ -1,4 +1,6 @@
 import json
+import os
+
 from bson import json_util
 
 import pymongo
@@ -13,12 +15,15 @@ from src.modules.models.data_models import (
     ParamsSearchUser,
 )
 
-PORT = 27027
-USERNAME = "root"
-PASSWORD = "password"
+
+HOST = os.getenv("MONGO_HOST")
+PORT = os.getenv("MONGO_PORT")
+USERNAME = os.getenv("MONGO_USERNAME")
+PASSWORD = os.getenv("MONGO_PASSWORD")
 DATABASE_NAME = "mydatabase"
+
 TIME_FORMAT = "%Y-%m-%dT%H:%M:%SZ"
-CREDENTIALS = dict(host="localhost", port=PORT, username=USERNAME, password=PASSWORD)
+CREDENTIALS = dict(host=HOST, port=PORT, username=USERNAME, password=PASSWORD)
 DEFAULT_RESPONSES = {
     500: {"description": "Internal Server Error", "model": Message},
 }
