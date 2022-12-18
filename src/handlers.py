@@ -16,14 +16,14 @@ from src.modules.models.data_models import (
 )
 
 
-HOST = os.getenv("MONGO_HOST")
-PORT = os.getenv("MONGO_PORT")
-USERNAME = os.getenv("MONGO_USERNAME")
-PASSWORD = os.getenv("MONGO_PASSWORD")
+HOST_MONGO = os.getenv("HOST_MONGO")
+PORT_MONGO = int(os.getenv("PORT_MONGO"))
+USERNAME = os.getenv("USERNAME")
+PASSWORD = os.getenv("PASSWORD")
 DATABASE_NAME = "mydatabase"
 
 TIME_FORMAT = "%Y-%m-%dT%H:%M:%SZ"
-CREDENTIALS = dict(host=HOST, port=PORT, username=USERNAME, password=PASSWORD)
+CREDENTIALS = dict(host=HOST_MONGO, port=PORT_MONGO, username=USERNAME, password=PASSWORD)
 DEFAULT_RESPONSES = {
     500: {"description": "Internal Server Error", "model": Message},
 }
