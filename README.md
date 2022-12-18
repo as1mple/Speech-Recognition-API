@@ -13,4 +13,4 @@ pip install -r requirements.txt
 ```
 
 ```bash
-uvicorn src.api_run:app 
+uvicorn src.api_run:app --h11-max-incomplete-event-size 100000000
