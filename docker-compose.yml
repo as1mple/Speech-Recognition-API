@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    networks:
+      - app-tier
+    ports:
+      - "27027:27017"
+
+networks:
+  app-tier:
+    driver: bridge
