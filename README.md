@@ -6,6 +6,8 @@
 docker-compose up -d
 ```
 
+# Fast-API-Template
+
 ## RUN FastAPI
 
 ```bash
