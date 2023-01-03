@@ -22,6 +22,7 @@ class ParamsDropUser(BaseModel):
 class ParamsAddData(BaseModel):
     user_id: str
     text: str
+    description: str
     speech_bytes: Union[str, bytes]
     language: str
     timestamp: datetime
