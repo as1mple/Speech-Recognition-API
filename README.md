@@ -31,5 +31,5 @@ uvicorn src.api_run:app --h11-max-incomplete-event-size 100000000
 sudo docker build -t fastapi_mongo -f Dockerfile . # => Docker build
 ```
 ```bash
-sudo docker run -p 8080:5011 -e HOST_MONGO=YOUR-HOST -e PORT_MONGO=YOUR-PORT -e USERNAME=YOUR-USERNAME -e PASSWORD=YOUR-PASSWORD fastapi_mongo # => Docker run
+sudo docker run -d --restart unless-stopped -p 8080:5011 -e HOST_MONGO=YOUR-HOST -e PORT_MONGO=YOUR-PORT -e USERNAME=YOUR-USERNAME -e PASSWORD=YOUR-PASSWORD fastapi_mongo # => Docker run
 ```
