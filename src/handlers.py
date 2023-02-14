@@ -43,7 +43,7 @@ async def get_user_data(
     try:
         with pymongo.MongoClient(**CREDENTIALS) as client:
             database = client[DATABASE_NAME]
-            collection = database["user"]
+            collection = database[details.name_collection]
 
             if not details.user_id:
                 query = {"timestamp": {"$gte": details.time_from, "$lt": details.time_to}}
@@ -72,11 +72,12 @@ async def add_data(params: ParamsAddData) -> Message:
     try:
         with pymongo.MongoClient(**CREDENTIALS) as client:
             database = client[DATABASE_NAME]
-            collection = database["user"]
+            collection = database[params.name_collection]
 
             event_dict = params.dict()
-            collection.insert_one(event_dict)
+            event_dict.pop("name_collection")
 
+            collection.insert_one(event_dict)
             return Message(message="Success.")
 
     except Exception as e:
@@ -102,7 +103,7 @@ async def drop_user(details: ParamsDropUser = Depends(ParamsDropUser)):
     try:
         with pymongo.MongoClient(**CREDENTIALS) as client:
             database = client[DATABASE_NAME]
-            collection = database["user"]
+            collection = database[details.name_collection]
 
             if details.timestamp:
                 collection.delete_one(

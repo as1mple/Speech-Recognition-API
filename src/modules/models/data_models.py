@@ -9,17 +9,20 @@ class Message(BaseModel):
 
 
 class ParamsSearchUser(BaseModel):
+    name_collection: str
     user_id: Optional[str]
     time_from: Optional[datetime]
     time_to: Optional[datetime]
 
 
 class ParamsDropUser(BaseModel):
+    name_collection: str
     user_id: Optional[str]
     timestamp: Optional[datetime]
 
 
 class ParamsAddData(BaseModel):
+    name_collection: str
     user_id: str
     text: str
     description: str
