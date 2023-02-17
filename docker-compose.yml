@@ -12,7 +12,13 @@ services:
       - app-tier
     ports:
       - "27027:27017"
-
+  app:
+    build: .
+    image: fastapi_mongo
+    container_name: fastapi_mongo
+    env_file: .env
+    ports:
+      - "8080:5011"
 networks:
   app-tier:
     driver: bridge
